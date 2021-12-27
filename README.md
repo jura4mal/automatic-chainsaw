@@ -1,39 +1,38 @@
-# Full Stack Web Development in the Cloud
+# create-svelte
 
-This repository contains the source code for the [Full Stack Web Development in the Cloud](https://youtu.be/OUzaUJ3gEug) course.
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
 
-## Architecture
+## Creating a project
 
-The diagram below outlines the high-level architecture and the hosting providers for the web application, API and database.
+If you're seeing this, you've probably already done this step. Congrats!
 
-![image](https://user-images.githubusercontent.com/788827/145879564-e7dc42d6-3055-492b-95d7-902e9a5fad96.png)
+```bash
+# create a new project in the current directory
+npm init svelte@next
 
-## Ephemeral developer environments
+# create a new project in my-app
+npm init svelte@next my-app
+```
 
-The entire course is developed using [Gitpod](https://www.gitpod.io/). For each task, we use an ephemeral developer environment that we dispose of as soon as the task is completed. Environments are fully automated and we never run `npm install` or `npm run dev` manually. We also don't have any code, dependencies, etc installed locally.
+> Note: the `@next` is temporary
 
-## Technology stack
+## Developing
 
-The course leverages the following technologies.
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-**Web application**
+```bash
+npm run dev
 
-[Svelte](https://svelte.dev/) is a compiler to develop highly performant web applications with great developer experience. The application is styled with plain CSS.
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
 
-**API**
+## Building
 
-[SvelteKit](https://kit.svelte.dev/) is the library & application framework powered by Svelte. It provides routing, server-side rendering and also enables us to develop a web application that works if Javascript is disabled.
+Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment. Then:
 
-[Prisma](https://www.prisma.io/) is the object-relational mapping (ORM) library that let's us interact with the database. Based on models we define, Prisma generates the database schema and keeps the databsae in sync with our model(s). In addition, it generates a Typescript client we import into our code so that we have type safety when we work with database objects.
+```bash
+npm run build
+```
 
-**Database**
-
-[Postgres](https://www.postgresql.org/) is our database of choice for the course. However, thanks to Prisma's support for various other databases, it is a matter of changing configuration values to leverage a different database.
-
-**Deployment**
-
-The web application and API are hosted on [Vercel](https://vercel.com/) whereas the database lives on [Railway](https://railway.app/).
-
-## Pull requests
-
-Each section of the course has [a corresponding pull request](https://github.com/gitpod-io/full-stack-web-development/pulls?q=is%3Apr+is%3Aclosed). If you get stuck, make sure you check out the source code to copy & paste what you need.
+> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
